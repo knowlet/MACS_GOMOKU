@@ -27,4 +27,8 @@ class Game {
     func getRules() -> GomokuRules {
         return rules
     }
+    
+    func setPlayer(_ player: Player){
+        board.setPlayer(player)
+    }
 }

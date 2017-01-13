@@ -68,4 +68,8 @@ class GameData: Board, BoardState {
             return (Player.empty, nil)
         }
     }
+    
+    func setPlayer(_ player: Player){
+        self.player = player;
+    }
 }

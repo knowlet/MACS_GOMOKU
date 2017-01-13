@@ -5,5 +5,6 @@ protocol Board {
     func getWidth() -> Int
     func getHeight() -> Int
     func whoseTurn() -> Player
+    func setPlayer(_ player: Player)
 }
 
