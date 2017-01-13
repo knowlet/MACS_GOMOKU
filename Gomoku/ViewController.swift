@@ -1,4 +1,5 @@
 import UIKit
+import SocketIO
 
 class ViewController: UIViewController {
     lazy var statusLabel: UILabel = {
