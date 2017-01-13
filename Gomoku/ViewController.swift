@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.blue
+        self.view.backgroundColor = UIColor.darkGray
         
         let gridView = GridView(frame: CGRect(x: 0, y: 200, width: self.view.frame.size.width, height: self.view.frame.size.width), board: game.getBoard())
         self.view.addSubview(gridView)
@@ -33,12 +33,16 @@ class ViewController: UIViewController {
     
     func respondToTap(_ col: Int, row: Int) {
         let tappingPlayer = game.whoseTurn()
-        game.takeTurn(col, row)
+        _ = game.takeTurn(col, row)
         if game.getRules().isWin(game.getBoard(), tappingPlayer) {
-            statusLabel.text = presenter.getWinStatus(tappingPlayer)
+            let a: UIAlertController = UIAlertController(title: "You Won", message: presenter.getWinStatus(tappingPlayer), preferredStyle: .alert)
+            let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default)
+            a.addAction(okAction)
+            self.present(a, animated: true, completion: nil)
+            // statusLabel.text = presenter.getWinStatus(tappingPlayer)
         }
         else {
-            statusLabel.text = presenter.getPlayerStatus(tappingPlayer)
+            statusLabel.text = presenter.getPlayerStatus(game.whoseTurn())
         }
     }
     
